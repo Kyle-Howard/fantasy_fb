@@ -1,0 +1,33 @@
+<form action="/fantasy_fb/league_view" method="get" class="form-example">
+  {% csrf_token %}
+  {% load static %}
+  <head>
+      <link rel="stylesheet" href="{% static 'fantasy_fb/reset.css' %}">
+      <link rel="stylesheet" href="{% static 'fantasy_fb/create.css' %}">
+  </head>
+  <h1>
+      ESPN Cross-League Matchup Generator
+    </h1>
+  <div>    
+    Input the league ID and year for both of your leagues below!
+  </div>
+    <br>
+    <br>
+  <div class="form-example">
+      <label for="comment">ID number for league 1: </label>
+      <input type="number" name="leagueid1" id="{{leagueid1}}" maxlength="7" required>
+      <label for="comment">Season year for league 1: </label>
+      <input type="number" name="year1" id="{{year1}}" minlength="4" maxlength="4" min=2013 max=2019 required>
+    </div>
+  <br>
+  <div class="form-example">
+      <label for="rating">ID number for league 2: </label>
+      <input type="number" name="leagueid2" id="{{leagueid2}}" maxlength="7" required>
+      <label for="comment">Season year for league 2: </label>
+      <input type="number" name="year2" id="{{year2}}" minlength="4" maxlength="4" min=2013 max=2019 required>
+    </div>
+  <br>
+  <div class="form-example">
+      <input type="submit" value="Submit">
+    </div>
+  </form>

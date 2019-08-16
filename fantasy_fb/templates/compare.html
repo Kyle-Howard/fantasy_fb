@@ -1,0 +1,45 @@
+<form action="" method="get" class="form-example">
+    {% csrf_token %}
+    {% load static %}
+    <head>
+            <link rel="stylesheet" href="{% static 'fantasy_fb/reset.css' %}">
+            <link rel="stylesheet" href="{% static 'fantasy_fb/create.css' %}">
+        </head>
+    <h1>    
+        Matchup View
+    </h1>
+    <br>
+    <div>
+            League 1 Team: 
+            <a href = "/fantasy_fb/team_view?team = {{team1.team_id}}">
+                {{team1.team_name}}
+            </a>
+            <br>
+            <br>
+            {% for player in roster1 %}
+                {{player.position}} | {{player.name}}
+                <br>
+            {% endfor %}
+            <br>
+            Total Score: {{score1}}
+    </div>
+    <br>
+    <div>
+            League 2 Team: 
+            <a href = "/fantasy_fb/team_view?team = {{team2}}">
+                {{team2.team_name}}
+            </a>
+            <br>
+            <br>
+            {% for player in roster2 %}
+                {{player.position}} | {{player.name}}
+                <br>
+            {% endfor %}
+            <br>
+            Total Score: {{score2}}
+    </div>
+    <br>
+    <div class="form-example">
+        <input type="submit" value="Submit">
+    </div>
+  </form>

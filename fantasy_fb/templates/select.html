@@ -1,0 +1,59 @@
+<form action="/fantasy_fb/matchup_view" method="get" class="form-example">
+    {% csrf_token %}
+    {% load static %}
+    <head>
+            <link rel="stylesheet" href="{% static 'fantasy_fb/reset.css' %}">
+            <link rel="stylesheet" href="{% static 'fantasy_fb/create.css' %}">
+        </head>
+    <h1>
+      Select Your Matchup
+    </h1>
+    <div>Create your desired matchup below!</div>
+    <br>
+    <br>
+    <br>
+    <div class="form-group">
+        <input type = "hidden" name = "league1" value = "{{league1}}" />
+        <input type = "hidden" name = "league2" value = "{{league2}}" />
+        <input type = "hidden" name = "year1" value = "{{year1}}" />
+        <input type = "hidden" name = "year2" value = "{{year2}}" />
+        <label for="{{ form.club.id_for_label }}" class="col-sm-2 control-label">Select Team From League 1:</label>
+        <div class="col-sm-10">    
+          <select id="{{ form.club.id_for_label }}" name="team1" class="form-control">
+            <option value="" selected>None</option>
+            {% for team in teams1 %}
+            <option value="{{ team.team_id }}">- <li>{{ team.team_name }}</li></option>
+            {% endfor %}
+          </select>    
+        </div>
+      </div>    
+      <br>
+    <div class="form-group">
+        <label for="{{ form.club.id_for_label }}" class="col-sm-2 control-label">Select Team From League 2:</label>
+        <div class="col-sm-10">    
+          <select id="{{ form.club.id_for_label }}" name="team2" class="form-control">
+            <option value="" selected>None</option>
+            {% for team in teams2 %}
+            <option value="{{ team.team_id }}">- <li>{{ team.team_name }}</li></option>
+            {% endfor %}
+          </select>    
+        </div>
+      <br>
+      </div>
+      <div class="form-group">
+            <label for="{{ form.club.id_for_label }}" class="col-sm-2 control-label">Select Week (Select 0 For Current/Most Recent Week):</label>
+            <div class="col-sm-10">    
+              <select id="{{ form.club.id_for_label }}" name="week" class="form-control">
+                <option value="" selected>--</option>
+                {% for num in range %}
+                <option value="{{ num }}"> <li>{{ num }}</li></option>
+                {% endfor %}
+              </select>    
+            </div>
+          </div>
+    <div class="form-example">
+    <br>
+    <div class="form-example">
+        <input type="submit" value="Submit">
+    </div>
+  </form>

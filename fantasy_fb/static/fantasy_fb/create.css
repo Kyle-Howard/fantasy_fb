@@ -1,0 +1,17 @@
+h1{
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 100%;
+    padding: 20px
+
+}
+div {
+    padding: 20px
+
+}
+.display-teams{
+    line-height: 140%;
+}
+form{
+    background-color: aliceblue
+}

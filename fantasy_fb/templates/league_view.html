@@ -1,0 +1,50 @@
+
+<form action="/fantasy_fb/select_matchup" method="get" class="form-example">
+    {% csrf_token %}
+    {% load static %}
+    <head>
+            <link rel="stylesheet" href="{% static 'fantasy_fb/reset.css' %}">
+            <link rel="stylesheet" href="{% static 'fantasy_fb/create.css' %}">
+        </head>
+    <input type = "hidden" name = "leagueid1" value = "{{leagueid1}}" />
+    <input type = "hidden" name = "leagueid2" value = "{{leagueid2}}" />
+    <input type = "hidden" name = "year1" value = "{{year1}}" />
+    <input type = "hidden" name = "year2" value = "{{year2}}" />
+    <h1>
+        View Leagues
+    </h1>
+    <div>
+        View Your League Composition Here!
+        <br>
+        Click on a team name to view team-specific information.      
+    
+    <br>
+    <br>
+    <br>
+    League 1 Teams:
+    <div class = "display-teams">
+            <br>
+            {% for team in teams1 %}
+                <a href = "/fantasy_fb/team_view?team = {{team}}">
+                    {{team.team_name}}
+                </a>
+                <br>
+            {% endfor %}
+            <br>
+        </div>            
+    <br>
+    League 2 Teams:
+    <div class = "display-teams">
+            <br>    
+            {% for team in teams2 %}
+                <a href = "/fantasy_fb/team_view?team = {{team}}">
+                    {{team.team_name}}
+                </a>
+                <br>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="form-example">
+        <input type="submit" value="Create Matchup">
+    </div>
+  </form>
